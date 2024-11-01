@@ -17,7 +17,6 @@ const poorUser = {
     addBalance(newBalance:number):string{     //add balance is a METHOD
         return `My total Balance is : ${this.balance + newBalance}`;
     }
-
 }
 
 
