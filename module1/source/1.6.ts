@@ -14,8 +14,13 @@ const addArrow = (num1:number,num2:number):number=>num1+num2
 const poorUser = {
     name: 'Mezba',
     balance:0,
-    addBalance(newBalance:number):string{
+    addBalance(newBalance:number):string{     //add balance is a METHOD
         return `My total Balance is : ${this.balance + newBalance}`;
     }
 
 }
+
+
+//CALL---BACK---FUNCTION
+const arr : number[] = [1,3,5]
+const newArray = arr.map((element:number):number =>element*element )
