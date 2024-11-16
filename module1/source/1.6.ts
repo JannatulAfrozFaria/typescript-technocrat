@@ -21,5 +21,6 @@ const poorUser = {
 
 
 //CALL---BACK---FUNCTION
+//create an array so thtat each element of given array is squared in the new array
 const arr : number[] = [1,3,5]
 const newArray = arr.map((element:number):number =>element*element );
