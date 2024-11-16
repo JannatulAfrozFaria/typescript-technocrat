@@ -23,4 +23,3 @@ const poorUser = {
 //CALL---BACK---FUNCTION
 const arr : number[] = [1,3,5]
 const newArray = arr.map((element:number):number =>element*element );
-console.log(newArray)
