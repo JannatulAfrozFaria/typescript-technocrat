@@ -13,4 +13,4 @@ const user :{
     isMarried: true
 };
 
-user.company='p'
+user.company='p';
