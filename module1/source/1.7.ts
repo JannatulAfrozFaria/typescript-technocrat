@@ -6,7 +6,7 @@
     const bros2:string[] = ['Tanmoy','Nahid','Rahat']
 
     bros1.push(...bros2) //---SPREAD OPERATOR CONVERTS THE ARRAY TO STRINGSS
-
+    console.log(bros1.push(...bros2))
 
 
     //REST OPERATOR
