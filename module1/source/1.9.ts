@@ -29,6 +29,10 @@
         gender: 'male',
         address: 'dhaka'
     }
+    //EXAMPLE-----2
     type UserName = string
     const user: UserName = 'Persi'
+    //EXAMPLE---3
+    type IsAdmin = boolean
+    const isAdmin : IsAdmin = true
 }
