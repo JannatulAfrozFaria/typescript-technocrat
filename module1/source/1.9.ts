@@ -29,4 +29,6 @@
         gender: 'male',
         address: 'dhaka'
     }
+    type UserName = string
+    const user: UserName = 'Persi'
 }
