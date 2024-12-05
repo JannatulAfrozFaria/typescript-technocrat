@@ -22,6 +22,7 @@
         ...mentors,
         ...mentors1,
     }
+    
     //REST OPERATOR
     const greetFriends = (...friends:string[]) =>{
         // console.log(`Hi ${friend1} ${friend2} ${friend3} `);
