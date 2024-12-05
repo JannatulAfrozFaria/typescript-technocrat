@@ -1,5 +1,6 @@
 {
     //TYPE ALIAS-------
+    
     const student1: {
         name: string;
         age: number;
@@ -14,12 +15,15 @@
         address: 'ctg',
     };
 
-    const student2:{
+    //CREATING A TYPE----
+    type Student = {
         name: string;
         age: number;
         gender: string;
+        contactNo?: string;
         address: string;
-    } = {
+    }
+    const student2: Student = {
         name: 'MIR',
         age: 40,
         gender: 'male',
