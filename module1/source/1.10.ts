@@ -19,5 +19,20 @@
     }
 
     // INTERSECTION TYPE--------
+    type NewFrontendDeveloper ={
+        skills: string[];
+        designation1: 'Frontend Dev'
+    }
+    type NewBackendDeveloper ={
+        skills: string[];
+        designation2: 'Backend Dev'
+    }
+
+    type NewFullStackDeveloper = NewFrontendDeveloper & NewBackendDeveloper
+    const fullStackDev: NewFullStackDeveloper ={
+        skills: ['HTML', 'CSS','Express'],
+        designation1: 'Frontend Dev',
+        designation2: 'Backend Dev'
+    }
     //---------
 }
