@@ -38,5 +38,5 @@
     }
     const permanentAddress = user?.address?.permanentAddress ?? 'No permanent Address';
     console.log({permanentAddress});
-   // 
+   // ts-node-dev --respawn --transpile-only .\module1\source\1.11.ts
 }

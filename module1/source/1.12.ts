@@ -28,7 +28,7 @@
     getSpeedInMeterPerSecond(1000);
 
     //never type
-    function throwError(msg:string){
+    function throwError(msg:string) : never{
         throw new Error(msg);
     }
     throwError('error found')

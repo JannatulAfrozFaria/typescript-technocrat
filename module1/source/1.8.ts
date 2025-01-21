@@ -21,4 +21,5 @@
   const myFriends = ["chendlar", "joye", "ross", "rachel", "monica", "pheobe"];
   const [, , bestFriend, ...rest] = myFriends;
   //---------------
+  
 }
