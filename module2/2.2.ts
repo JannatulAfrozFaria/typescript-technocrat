@@ -39,4 +39,22 @@
         age: 90,
         role: 'student' //if role not added, it will show error
     }
+
+    //in case of array----
+    //type alias
+    type Roll1 = number[];
+    //interface----
+    interface Roll2{
+        [index:number] : number
+    }
+    const rollNumber1:Roll2 = [1,2,3]
+
+
+    //in case of function---
+    type Add = (num1:number,num2:number) => number;
+    interface Add2 {
+        (num1:number,num2:number) : number
+    }
+
+    const add: Add2 = (num1,num2) => num1 +num2
 }
