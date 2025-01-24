@@ -5,5 +5,7 @@
 
     const mentors: string[] = ['Mr' , 'Y' , 'Z'];
     const mentors2: Array<string> = ['Mr' , 'Y' , 'Z'];
+
     const booleanArray:boolean[] = [true, false, true];
+    const booleanArray2: Array<boolean> = [true, false, true];
 }
