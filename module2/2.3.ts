@@ -27,4 +27,9 @@
             age: 110,
         },
     ]
+
+    //generic tuple
+    type GenericTuple<X,Y> = [X,Y]
+    const manush :[string,string] =  ['Mr X', 'Ms Y']
+    const manush2 :GenericTuple<string,string> =  ['Mr X', 'Ms Y'] // use of tuple
 }
