@@ -17,6 +17,7 @@
     const mentors3: GenericArray<string> = ['Mr' , 'Y' , 'Z'];
     const booleanArray3: GenericArray<boolean> = [true, false, true];
 
+    
     const user : GenericArray<{name:string, age:number}>  = [
         {
             name: 'Mezba',
@@ -27,7 +28,21 @@
             age: 110,
         },
     ]
-
+    //use of interface-----
+    interface User  {
+        name: string;
+        age:number;
+    }
+    const user2 :GenericArray<User>  = [
+        {
+            name: 'Mezba',
+            age: 100,
+        },
+        {
+            name: 'Jhankar',
+            age: 110,
+        },
+    ]
     //generic tuple
     type GenericTuple<X,Y> = [X,Y]
     const manush :[string,string] =  ['Mr X', 'Ms Y']
