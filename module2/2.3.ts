@@ -17,7 +17,7 @@
     const mentors3: GenericArray<string> = ['Mr' , 'Y' , 'Z'];
     const booleanArray3: GenericArray<boolean> = [true, false, true];
 
-    const user : GenericArray<object>  = [
+    const user : GenericArray<{name:string, age:number}>  = [
         {
             name: 'Mezba',
             age: 100,
