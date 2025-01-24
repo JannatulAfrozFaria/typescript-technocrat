@@ -32,4 +32,6 @@
     type GenericTuple<X,Y> = [X,Y]
     const manush :[string,string] =  ['Mr X', 'Ms Y']
     const manush2 :GenericTuple<string,string> =  ['Mr X', 'Ms Y'] // use of tuple
-}
+    const UserWithID :GenericTuple<number , {name:string, email:string}>  = [1234, {name: 'persian' , email: 'a@gmail.com'} ] // use of tuple
+
+}   
