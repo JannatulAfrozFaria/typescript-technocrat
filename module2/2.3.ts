@@ -11,7 +11,7 @@
     const booleanArray2: Array<boolean> = [true, false, true];
 
     //dynamic type declaration 
-    type GenericArray<param> = Array<param>
+    type GenericArray<T> = Array<T>
 
     const rollNumbers3 :  GenericArray<number> = [3,6,8];
     const mentors3: GenericArray<string> = ['Mr' , 'Y' , 'Z'];
