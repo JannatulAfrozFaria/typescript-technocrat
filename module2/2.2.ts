@@ -17,4 +17,7 @@
         age: 100,
     }
     // 
+
+    //intersect
+    type UserWithRoll1 = User1 & {role : string}
 }
