@@ -28,7 +28,7 @@
             age: 110,
         },
     ]
-    //use of interface-----23
+    //use of interface-----231
     interface User  {
         name: string;
         age:number;
