@@ -7,10 +7,20 @@
             model: string;
             releaseYear: number
         };
-        smartWatch: string;
+        smartWatch: T;
     }
-    const poorDeveloper: Developer = {
-        
+    const poorDeveloper: Developer<> = {
+        name: 'Per',
+        computer: {
+            brand: 'Asus',
+            model: 'X-255UR',
+            releseYear: 2013
+        },
+        smartWatch: {
+            brand:'Emilab',
+            model:'kw66',
+            display: 'OLED'
+        }
     }
     //
 }
