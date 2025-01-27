@@ -22,5 +22,19 @@
             display: 'OLED'
         }
     }
+    const richDeveloper: Developer<> = {
+        name: 'Eich Dev',
+        computer: {
+            brand: 'HP',
+            model: 'X-255UR',
+            releseYear: 2018
+        },
+        smartWatch: {
+            brand:'Apple Watch',
+            model:'kw66',
+            heartTrack: true,
+            sleepTrack: true
+        }
+    }
     //
 }
