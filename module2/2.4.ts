@@ -1,5 +1,5 @@
 {
-    //
+    //interface------generic
     interface Developer {
         name: string;
         computer: {
