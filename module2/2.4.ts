@@ -1,6 +1,6 @@
 {
     //interface------generic
-    interface Developer {
+    interface Developer<T> {
         name: string;
         computer: {
             brand:string;
@@ -8,6 +8,9 @@
             releaseYear: number
         };
         smartWatch: string;
+    }
+    const poorDeveloper: Developer = {
+        
     }
     //
 }
