@@ -17,7 +17,7 @@
     const mentors3: GenericArray<string> = ['Mr' , 'Y' , 'Z'];
     const booleanArray3: GenericArray<boolean> = [true, false, true];
 
-    type UserType = {
+    interface UserType  {
         name:string;
         age:number;
     }
