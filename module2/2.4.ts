@@ -9,12 +9,16 @@
         };
         smartWatch: T;
     }
-    const poorDeveloper: Developer<> = {
+    const poorDeveloper: Developer<{
+        brand: string;
+        model: string;
+        display:string;
+    }> = {
         name: 'Per',
         computer: {
             brand: 'Asus',
             model: 'X-255UR',
-            releseYear: 2013
+            releseYear: 2013,
         },
         smartWatch: {
             brand:'Emilab',
