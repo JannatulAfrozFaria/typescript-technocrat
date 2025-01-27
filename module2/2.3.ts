@@ -1,6 +1,6 @@
 {   
     
-    //generic type 
+    //generic type 21
     const rollNumbers :  number[] = [3,6,8];
     const rollNumbers2 :  Array<number> = [3,6,8];
 
