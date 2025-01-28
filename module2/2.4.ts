@@ -18,7 +18,7 @@
         computer: {
             brand: 'Asus',
             model: 'X-255UR',
-            releseYear: 2013,
+            releaseYear: 2013,
         },
         smartWatch: {
             brand:'Emilab',
