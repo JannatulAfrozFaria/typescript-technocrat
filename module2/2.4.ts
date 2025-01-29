@@ -30,7 +30,7 @@
         brand: string;
         model: string;
         heartTrack: boolean;
-        
+        sleepTrack:boolean;
     }> = {
         name: 'Eich Dev',
         computer: {
