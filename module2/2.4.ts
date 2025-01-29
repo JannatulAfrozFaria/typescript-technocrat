@@ -14,7 +14,7 @@
         model: string;
         display:string;
     }
-    const poorDeveloper: Developer<> = {
+    const poorDeveloper: Developer<EmilabWatch> = {
         name: 'Per',
         computer: {
             brand: 'Asus',
