@@ -11,7 +11,8 @@
     }
     type EmilabWatch = {
         brand: string;
-        model:
+        model: string;
+        display:string;
     }
     const poorDeveloper: Developer<> = {
         name: 'Per',
