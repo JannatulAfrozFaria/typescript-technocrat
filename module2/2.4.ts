@@ -26,7 +26,11 @@
             display: 'OLED'
         }
     }
-    const richDeveloper: Developer<> = {
+    const richDeveloper: Developer<{
+        brand: string;
+        model: string;
+        heart
+    }> = {
         name: 'Eich Dev',
         computer: {
             brand: 'HP',
@@ -37,7 +41,7 @@
             brand:'Apple Watch',
             model:'kw66',
             heartTrack: true,
-            sleepTrack: true
+            sleepTrack: true,
         }
     }
     //
