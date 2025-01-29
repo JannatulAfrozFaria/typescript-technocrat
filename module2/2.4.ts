@@ -9,6 +9,9 @@
         };
         smartWatch: T;
     }
+    type EmilabWatch = {
+        brand: string;
+    }
     const poorDeveloper: Developer<{
         brand: string;
         model: string;
