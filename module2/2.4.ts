@@ -29,7 +29,8 @@
     const richDeveloper: Developer<{
         brand: string;
         model: string;
-        heart
+        heartTrack: boolean;
+        
     }> = {
         name: 'Eich Dev',
         computer: {
