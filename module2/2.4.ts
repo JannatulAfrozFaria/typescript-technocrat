@@ -11,12 +11,9 @@
     }
     type EmilabWatch = {
         brand: string;
+        model:
     }
-    const poorDeveloper: Developer<{
-        brand: string;
-        model: string;
-        display:string;
-    }> = {
+    const poorDeveloper: Developer<> = {
         name: 'Per',
         computer: {
             brand: 'Asus',
