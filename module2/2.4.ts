@@ -36,7 +36,7 @@
         computer: {
             brand: 'HP',
             model: 'X-255UR',
-            releseYear: 2018
+            releaseYear: 2018,
         },
         smartWatch: {
             brand:'Apple Watch',
