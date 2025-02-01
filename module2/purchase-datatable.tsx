@@ -148,7 +148,7 @@ export function DataTable({ columns, data }: DataTableProps<Invoice, Invoice>) {
 						>
 							Next
 						</Button>{' '}
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
