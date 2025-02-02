@@ -1,5 +1,5 @@
 {
-    //interface------generic1
+    //interface------generic2
     interface Developer<T> {
         name: string;
         computer: {
