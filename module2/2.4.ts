@@ -49,7 +49,7 @@
         },
         bike:{
             model: 'Yamaha',
-            engineCapacity
+            engineCapacity: '100cc'
         }
     }
     //
