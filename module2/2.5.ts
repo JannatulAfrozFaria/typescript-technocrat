@@ -16,7 +16,7 @@
     const createArrayWithTuple = <T,Q> (param1:T, param2:Q) : [T,Q] =>{
         return [param1,param2]
     }
-    const res1 = createArray('Bangladesh')
+    const resT1 = createArrayWithTuple('Bangladesh',222)
     const resGeneric = createArrayWithGeneric<boolean>(true);
     const resGenericString = createArrayWithGeneric<string>('Bangladesh');
     type User = {id:number; name: string}
