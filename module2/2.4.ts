@@ -35,7 +35,8 @@
         sleepTrack:boolean;
     }
     interface YamahaBike{
-        model:
+        model: string;
+        engineCapacity
     }
     const richDeveloper: Developer<AppleWatch> = {
         name: 'Eich Dev',
