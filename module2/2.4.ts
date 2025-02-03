@@ -34,6 +34,9 @@
         heartTrack: boolean;
         sleepTrack:boolean;
     }
+    interface YamahaBike{
+        model:
+    }
     const richDeveloper: Developer<AppleWatch> = {
         name: 'Eich Dev',
         computer: {
