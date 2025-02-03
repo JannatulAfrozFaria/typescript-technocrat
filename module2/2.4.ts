@@ -46,6 +46,10 @@
             model:'kw66',
             heartTrack: true,
             sleepTrack: true,
+        },
+        bike:{
+            model: 'Yamaha',
+            engineCapacity
         }
     }
     //
