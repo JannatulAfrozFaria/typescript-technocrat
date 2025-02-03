@@ -33,7 +33,7 @@
         heartTrack: boolean;
         sleepTrack:boolean;
     }
-    const richDeveloper: Developer<> = {
+    const richDeveloper: Developer<AppleWatch> = {
         name: 'Eich Dev',
         computer: {
             brand: 'HP',
