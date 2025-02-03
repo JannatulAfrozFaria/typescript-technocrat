@@ -1,6 +1,6 @@
 {
     //interface------generic6
-    interface Developer<T> {
+    interface Developer<T, X> {
         name: string;
         computer: {
             brand:string;
@@ -8,6 +8,7 @@
             releaseYear: number
         };
         smartWatch: T;
+        bike? : X
     }
     type EmilabWatch = {
         brand: string;
