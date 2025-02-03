@@ -27,6 +27,12 @@
             display: 'OLED'
         }
     }
+    type AppleWatch = {
+        brand: string;
+        model: string;
+        heartTrack: boolean;
+        sleepTrack:boolean;
+    }
     const richDeveloper: Developer<{
         brand: string;
         model: string;
