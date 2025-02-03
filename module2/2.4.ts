@@ -36,7 +36,7 @@
     }
     interface YamahaBike{
         model: string;
-        engineCapacity
+        engineCapacity: string;
     }
     const richDeveloper: Developer<AppleWatch> = {
         name: 'Eich Dev',
