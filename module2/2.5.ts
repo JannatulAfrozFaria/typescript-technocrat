@@ -8,6 +8,7 @@
     }
     const res1 = createArray('Bangladesh')
     const resGeneric = createArrayWithGeneric<boolean>(true);
-    const resGeneric1 = createArrayWithGeneric<string>('Bangladesh');
+    const resGenericString = createArrayWithGeneric<string>('Bangladesh');
+    const resGenericObject = createArrayWithGeneric<string>({id:222,name:'Mr'});
     //
 }
