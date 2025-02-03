@@ -3,6 +3,9 @@
     const createArray = (param:string) : string[] =>{
         return [param]
     }
-    const rest1 = createArray('Bangladesh')
+    const createArrayWithGeneric = (param:string) : string[] =>{
+        return [param]
+    }
+    const res1 = createArray('Bangladesh')
     //
 }
