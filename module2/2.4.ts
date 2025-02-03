@@ -38,7 +38,7 @@
         model: string;
         engineCapacity: string;
     }
-    const richDeveloper: Developer<AppleWatch> = {
+    const richDeveloper: Developer<AppleWatch,YamahaBike> = {
         name: 'Eich Dev',
         computer: {
             brand: 'HP',
