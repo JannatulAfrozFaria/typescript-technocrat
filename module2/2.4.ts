@@ -1,6 +1,6 @@
 {
     //interface------generic6
-    interface Developer<T, X> {
+    interface Developer<T, X = null> {
         name: string;
         computer: {
             brand:string;
