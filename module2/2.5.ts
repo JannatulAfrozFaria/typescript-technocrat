@@ -13,7 +13,7 @@
     const resGenericObject = createArrayWithGeneric<User>({id:222,name:'Mr'});
 
 
-    const createArrayWithTuple = <T> (param:T) : T[] =>{
+    const createArrayWithTuple = <T,Q> (param1:T, param2:Q) : T[] =>{
         return [param]
     }
     const res1 = createArray('Bangladesh')
