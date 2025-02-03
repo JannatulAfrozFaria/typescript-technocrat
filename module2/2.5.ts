@@ -20,5 +20,13 @@
     const resGenericStringT = createArrayWithTuple<string,string>('Bangladesh','Asia');
     const resGenericStringObjectT = createArrayWithTuple<string,{name:string}>('Bangladesh',{name:'Asia'});
 
+    const addCourseToStudent =<T> (student: T) =>{
+        const course = 'Next Level Web Development'
+        return{
+            ...student,
+            course
+        }
+    }
+
     //
 }
