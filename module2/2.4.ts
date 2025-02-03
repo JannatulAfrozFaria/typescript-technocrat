@@ -33,12 +33,7 @@
         heartTrack: boolean;
         sleepTrack:boolean;
     }
-    const richDeveloper: Developer<{
-        brand: string;
-        model: string;
-        heartTrack: boolean;
-        sleepTrack:boolean;
-    }> = {
+    const richDeveloper: Developer<> = {
         name: 'Eich Dev',
         computer: {
             brand: 'HP',
