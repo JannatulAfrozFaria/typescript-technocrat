@@ -1,5 +1,5 @@
 {
-    //constraint4
+    //constraint
     const addCourseToStudent =<T extends {
         id: number;
         name: string;
