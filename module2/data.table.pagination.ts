@@ -11,4 +11,4 @@
 	// 	},
 	// });
 
-	// const paginatedData = table.getRowModel().rows.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+	// const paginatedData = table.getRowModel().rows.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage); 
