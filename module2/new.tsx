@@ -307,7 +307,7 @@ export default function SalesOverviewData() {
 													}}
 												>
 													Next
-												</Button>1
+												</Button>
 											</div>
 										</div>
 									) : (
