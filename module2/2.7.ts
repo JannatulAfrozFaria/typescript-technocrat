@@ -1,5 +1,7 @@
 {
     //generic constraint with keyof operator
-    const
+    type Vehicle = {
+
+    }
     //
 }
