@@ -7,5 +7,6 @@
     }
     type Owner = "bike" | "car" | "ship" ; //manually
     type Owner2 = keyof Vehicle
+    const person1:Owner2 = ""
     //
 }
