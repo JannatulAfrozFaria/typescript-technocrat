@@ -22,6 +22,7 @@
         model:"Toyota 100",
         year: 200
     }
+    const result1 = getPropertyValue(car,'year');
     // const person1:Owner2 = ""
     
 
