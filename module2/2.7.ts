@@ -7,7 +7,8 @@
     }
     type Owner = "bike" | "car" | "ship" ; //manually
     type Owner2 = keyof Vehicle
-    const getPropertyValue = <X,Y> (obj: X, key: Y)=>{
+
+    const getPropertyValue = <X,Y extends "name" | "age" | "address"> (obj: X, key: Y)=>{
         return obj[key];
     }
 
