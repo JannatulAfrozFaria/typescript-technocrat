@@ -5,5 +5,6 @@
         car: string;
         ship: string;
     }
+    type Owner = "bike" | "car" | "ship" ; //manually
     //
 }
