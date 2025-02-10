@@ -7,12 +7,18 @@
     }
     type Owner = "bike" | "car" | "ship" ; //manually
     type Owner2 = keyof Vehicle
-    const person1:Owner2 = ""
+    function getPropertyValue(obj: object, key: string){
+        return obj[key];
+    }
+
     const user = {
         name: 'Mr. persi',
         age: 27,
         address: 'ctg'
     }
-    user['name']
+    const result = getPropertyValue(user,'name');
+    const person1:Owner2 = ""
+    
+
     //
 }
