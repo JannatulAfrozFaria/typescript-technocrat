@@ -23,7 +23,7 @@
         year: 200
     }
     const result1 = getPropertyValue(car,'year');
-    // const person1:Owner22 = ""
+    // const person1:Owner24 = ""
     
 
     //
