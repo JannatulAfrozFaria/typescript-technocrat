@@ -26,132 +26,6 @@ const data: JournalEntry[] = [
 		credit: '-',
 		amount: 1200,
 	},
-	{
-		id: '2',
-		date: new Date('03.02.2025'),
-		description: 'Invoice payment from client Omar',
-		account: 'Accounts receivable',
-		debit: 300,
-		credit: '-',
-		amount: 300,
-	},
-	{
-		id: '3',
-		date: new Date('03.02.2025'),
-		description: 'Office rent payment',
-		account: 'Rent expense',
-		debit: 80,
-		credit: '-',
-		amount: 80,
-	},
-	{
-		id: '4',
-		date: new Date('03.02.2025'),
-		description: 'Purchased Wireless Mouse',
-		account: 'cash',
-		debit: 50,
-		credit: '-',
-		amount: 50,
-	},
-	{
-		id: '5',
-		date: new Date('03.02.2025'),
-		description: 'Equipment purchase',
-		account: 'Machinery & equipment',
-		debit: 30,
-		credit: '-',
-		amount: 30,
-	},
-	{
-		id: '6',
-		date: new Date('03.02.2025'),
-		description: 'Purchased Scientific Calculator',
-		account: 'Accounts payable',
-		debit: 70,
-		credit: '-',
-		amount: 70,
-	},
-	{
-		id: '7',
-		date: new Date('03.02.2025'),
-		description: 'Loan repayment',
-		account: 'Loan payable',
-		debit: 250,
-		credit: '-',
-		amount: 250,
-	},
-	{
-		id: '8',
-		date: new Date('03.02.2025'),
-		description: 'Loan repayment',
-		account: 'cash',
-		debit: 400,
-		credit: '-',
-		amount: 400,
-	},
-	{
-		id: '9',
-		date: new Date('03.02.2025'),
-		description: 'Employee salary payment',
-		account: 'Salaries expense',
-		debit: 100,
-		credit: '-',
-		amount: 100,
-	},
-	{
-		id: '10',
-		date: new Date('03.02.2025'),
-		description: 'Purchased Wall Clock',
-		account: 'cash',
-		debit: 40,
-		credit: '-',
-		amount: 40,
-	},
-	{
-		id: '11',
-		date: new Date('03.02.2025'),
-		description: 'Purchased Clipboards (Pack of 5)',
-		account: 'cash',
-		debit: 25,
-		credit: '-',
-		amount: 25,
-	},
-	{
-		id: '12',
-		date: new Date('03.02.2025'),
-		description: 'Sales revenue from product',
-		account: 'Sales revenue',
-		debit: 60,
-		credit: '-',
-		amount: 60,
-	},
-	{
-		id: '13',
-		date: new Date('03.02.2025'),
-		description: 'Employee salary payment',
-		account: 'cash',
-		debit: 90,
-		credit: '-',
-		amount: 90,
-	},
-	{
-		id: '14',
-		date: new Date('03.02.2025'),
-		description: 'Sales revenue from product',
-		account: 'cash',
-		debit: 250,
-		credit: '-',
-		amount: 250,
-	},
-	{
-		id: '15',
-		date: new Date('03.02.2025'),
-		description: 'Purchased LED Desk Lamp',
-		account: 'cash',
-		debit: 45,
-		credit: '-',
-		amount: 45,
-	},
 ];
 
 //to view----empty---page:
@@ -278,10 +152,7 @@ export default function JournalEntries() {
 						onOpenChange={setShowJournalEntryFormModal}
 					/>
 					<div className='rounded-3xl border-2 border-[#e2e8f0] bg-white my-6 p-4'>
-						<JournalEntriesTopBar
-							searchTerm={searchTerm}
-							setSearchTerm={setSearchTerm}
-						/>
+						
 
 						<JournalEntriesDataTable
 							data={paginatedData}
@@ -289,24 +160,7 @@ export default function JournalEntries() {
 							handleJournalEntryActions={handleJournalEntryActions}
 						/>
 
-						<ConfirmDeleteModal
-							isOpen={showDeleteConfirmDialog}
-							onOpenChange={setShowDeleteConfirmDialog}
-							handleDelete={handleConfirmDelete}
-							title='Delete Product'
-							description='Are you sure you want to delete this product? This action cannot be undone.'
-							confirmButtonText='Delete'
-							cancelButtonText='Cancel'
-						/>
-
-						<Pagination
-							handlePageChange={handlePageChange}
-							isPending={isPending}
-							canGoToPreviousPage={canGoToPreviousPage}
-							canGoToNextPage={canGoToNextPage}
-							currentPageNumber={currentPageNumber}
-							totalPages={totalPages}
-						/>
+						
 					</div>
 				</div>
 			) : (
