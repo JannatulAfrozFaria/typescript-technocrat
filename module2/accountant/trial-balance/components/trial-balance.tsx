@@ -20,7 +20,7 @@ const data: JournalEntry[] = [
 		account: 'cash',
 		debit: 1200,
 		credit: '-',
-		amount: 120,
+		amount: 1200,
 		type: 'Assets',
 	},
 	{
