@@ -24,7 +24,7 @@ const data: JournalEntry[] = [
 		type: 'Assets',
 	},
 	{
-		id: '',
+		id: '2',
 		date: new Date('03.02.2025'),
 		description: 'Invoice payment from client Omar',
 		account: 'Accounts receivable',
