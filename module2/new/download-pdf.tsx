@@ -9,7 +9,7 @@ interface SvgIconProps {
 const DownloadPdfIcon: React.FC<SvgIconProps> = ({
 	width = 20,
 	height = 20,
-	color = 'black',
+	color = 'blac',
 }) => {
 	return (
 		<svg
