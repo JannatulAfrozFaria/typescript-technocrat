@@ -9,3 +9,4 @@ export type JournalEntry = {
 	icon?: ReactNode;
 	type: string;
 };
+abrar/dynamic-invoice
