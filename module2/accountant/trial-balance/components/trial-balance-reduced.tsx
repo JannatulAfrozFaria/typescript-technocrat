@@ -92,10 +92,10 @@ export default function TrialBalance() {
 						/>
 					</div>
 					<div className='rounded-3xl border-2 border-[#e2e8f0] bg-white my-6 p-4'>
-						<TrialBalanceTopBar
+						{/* <TrialBalanceTopBar
 							searchTerm={searchTerm}
 							setSearchTerm={setSearchTerm}
-						/>
+						/> */}
 						<TrialBalanceDataTable
 							data={filteredData}
 							columns={trialBalanceTableColumns}
