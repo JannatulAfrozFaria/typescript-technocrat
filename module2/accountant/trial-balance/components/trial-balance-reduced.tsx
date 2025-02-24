@@ -96,10 +96,10 @@ export default function TrialBalance() {
 							searchTerm={searchTerm}
 							setSearchTerm={setSearchTerm}
 						/>
-						{/* <TrialBalanceDataTable
+						<TrialBalanceDataTable
 							data={filteredData}
 							columns={trialBalanceTableColumns}
-						/> */}
+						/>
 						
 					</div> 
 				</div>
