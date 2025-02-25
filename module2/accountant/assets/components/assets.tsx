@@ -79,7 +79,7 @@ const dummyData: Asset[] = [
 	},
 ];
 
-// const dummyData = [];
+
 
 const dataByTab: Record<TabKey, Asset[]> = {
 	active: dummyData.filter((item) => item.status === 'Active'),
