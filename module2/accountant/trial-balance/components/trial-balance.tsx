@@ -162,7 +162,7 @@ const data: JournalEntry[] = [
 	},
 ];
 
-const itemsPerPage = 11;
+const itemsPerPage = 1;
 
 export default function TrialBalance() {
 	const [isPending, startTransition] = useTransition();
