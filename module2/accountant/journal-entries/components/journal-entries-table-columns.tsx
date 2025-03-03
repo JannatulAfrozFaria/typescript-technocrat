@@ -51,7 +51,18 @@ export const journalEntriesTableColumns: ColumnDef<JournalEntry>[] = [
 			<span className='text-[#0F172A] text-sm'>{row.original.account} </span>
 		),
 	},
-	
+	{
+		id: 'debit',
+		accessorKey: 'debit',
+		header: 'Debit amount',
+		cell: ({ row }) => (
+			<span>
+				{typeof row.original.debit === 'number'
+					? formatIndianNumber(row.original.debit)
+					: row.original.debit}
+			</span>
+		),
+	},
 	{
 		id: 'credit',
 		accessorKey: 'credit',
