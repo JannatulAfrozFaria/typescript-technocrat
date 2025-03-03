@@ -15,7 +15,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import CalendarIcon from '@/components/icon-components/calendar-icon';
 import DownArrowIcon from '@/components/icon-components/down-arrow-icon';
-import { Calendar } from '@/components/ui/calendar';
 import React from 'react';
 
 interface JournalEntriesTopBarProps {
@@ -33,8 +32,6 @@ export default function JournalEntriesTopBar({
 	filters,
 	setFilters,
 }: JournalEntriesTopBarProps) {
-	const [date, setDate] = React.useState<Date>(new Date());
-
 	const handleTypeChange = (value: string) => {
 		setFilters({
 			...filters,
@@ -61,7 +58,7 @@ export default function JournalEntriesTopBar({
 						value={filters.type || 'ALL'}
 						onValueChange={handleTypeChange}
 					>
-						<SelectTrigger className='!w-[220px] flex gap-2 items-center justify-start'>
+						<SelectTrigger className='flex gap-2 items-center justify-start'>
 							<span className='text-[#475569] text-sm font-medium'>
 								Account type:{' '}
 							</span>
@@ -77,24 +74,17 @@ export default function JournalEntriesTopBar({
 						</SelectContent>
 					</Select>
 				</div>
-				<div>
-					<DropdownMenu>
-						<DropdownMenuTrigger className='flex gap-2 items-center border rounded-md p-2'>
-							<CalendarIcon /> <span>{date.toLocaleDateString()}</span>{' '}
-							<DownArrowIcon width={14} />
-						</DropdownMenuTrigger>
-						<DropdownMenuContent>
-							<Calendar
-								mode='single'
-								selected={date}
-								onSelect={(selectedDate) => {
-									if (selectedDate) setDate(selectedDate);
-								}}
-								className=''
-							/>
-						</DropdownMenuContent>
-					</DropdownMenu>
-				</div>
+
+				<Select>
+					<SelectTrigger className=' flex gap-2 items-center '>
+						<CalendarIcon /> <SelectValue placeholder={'Jan 01 -Jan 31,2025'} />
+					</SelectTrigger>
+					<SelectContent className='text-[#0F172A] text-sm'>
+						<SelectItem value='December'>Dec 01 -Dec 31,2024</SelectItem>
+						<SelectItem value='February'>Feb 01 -Feb 28,2025</SelectItem>
+						<SelectItem value='March'>Mar 01 -Mar 31,2025</SelectItem>
+					</SelectContent>
+				</Select>
 			</div>
 		</div>
 	);

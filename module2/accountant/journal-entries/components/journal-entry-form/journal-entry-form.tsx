@@ -3,6 +3,7 @@
 import { useForm, useWatch } from 'react-hook-form';
 import {
 	DatePicker,
+	DropDown,
 	TextArea,
 	TextField,
 	TextFieldNumberType,
@@ -14,19 +15,21 @@ import BinIcon from '@/components/icon-components/bin-icon';
 import { type Dispatch, type SetStateAction } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { SelectItem } from '@/components/ui/select';
+import DatePickerInput from '@/components/date-picker-input';
 
 interface JournalEntryFormProps {
 	onOpenChange: Dispatch<SetStateAction<boolean>>;
 }
 
 const journalEntrySchema = z.object({
-	description: z.string().min(1, 'Description is required'),
+	description: z.string().optional(),
 	date: z.string().min(1, 'Date is required'),
 	entries: z
 		.array(
 			z.object({
 				account: z.string().min(1, 'Account is required'),
-				accountDescription: z.string().min(1, 'Description is required'),
+				accountDescription: z.string().optional(),
 				debit: z
 					.string()
 					.optional()
@@ -135,6 +138,7 @@ export default function JournalEntryForm({
 					<div className='col-span-2'>
 						<FormInputLabel text='Date' />
 						<DatePicker name='date' label='' control={control} />
+						{/* <DatePickerInput name='date' label='' control={control} /> */}
 					</div>
 				</div>
 
@@ -143,12 +147,15 @@ export default function JournalEntryForm({
 				{entries.map((entry, index) => (
 					<div key={index} className='grid grid-cols-4 gap-4'>
 						<div className='col-span-1'>
-							<TextField
+							<DropDown
 								name={`entries.${index}.account`}
 								label='Account'
-								placeholder='Account'
+								placeholder='Select account'
 								control={control}
-							/>
+							>
+								<SelectItem value='account1'>Account 1</SelectItem>
+								<SelectItem value='account2'>Account 2</SelectItem>
+							</DropDown>
 						</div>
 						<div className='col-span-1'>
 							<TextArea

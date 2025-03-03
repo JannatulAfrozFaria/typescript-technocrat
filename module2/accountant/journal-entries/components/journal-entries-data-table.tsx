@@ -60,7 +60,7 @@ export default function JournalEntriesDataTable({
 						</TableRow>
 					))}
 				</TableHeader>
-				<TableBody className='w-full border-b text-[10px] xl:text-[16px]'>
+				<TableBody className='w-full border-b'>
 					{table.getRowModel().rows?.length ? (
 						table.getRowModel().rows.map((row, rowIndex) => (
 							<TableRow
@@ -74,7 +74,7 @@ export default function JournalEntriesDataTable({
 								{row.getVisibleCells().map((cell) => (
 									<TableCell
 										key={cell.id}
-										className='text-justify py-4 border-b text-sm'
+										className='text-justify py-4 border-b text-[12px]'
 									>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
 									</TableCell>
