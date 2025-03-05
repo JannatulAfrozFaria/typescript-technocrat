@@ -110,13 +110,16 @@ export default function ProductDropDown({
 					<FormControl>
 						<Select
 							open={open}
-							onOpenChange={setOpen}
+							onOpenChange={setOpen} // Ensure toggle works
 							onValueChange={(value) => {
 								field.onChange(value);
-
+								// setOpen(false);
+								// Find the selected product from the options
 								const selectedProduct = products.find(
 									(option) => option.value === value
 								);
+
+								// Call onProductSelect with the selected product's data
 								if (selectedProduct) {
 									onProductSelect(selectedProduct);
 								}
@@ -124,7 +127,7 @@ export default function ProductDropDown({
 							value={field.value}
 						>
 							<SelectTrigger
-								onClick={() => setOpen(!open)}
+								onClick={() => setOpen(!open)} // Ensure trigger opens/closes
 								style={{ backgroundColor: '#F8FAFC', height: 40 }}
 							>
 								<SelectValue placeholder='Select' />
@@ -138,24 +141,17 @@ export default function ProductDropDown({
 										value={search}
 										onChange={(e) => {
 											setSearch(e.target.value);
-											setTimeout(() => e.target.focus(), 0);
+											setTimeout(() => e.target.focus(), 0); // to keep focus at it
 										}}
 										className='w-full px-2 py-1 border rounded-md mb-2'
 									/>
 								</div>
+
 								{/* {filteredOptions.length > 0 ? (
 									filteredOptions.map((option) => (
 										<SelectItem key={option.value} value={option.value}>
 											<div className='flex items-center gap-2'>
-												<Avatar className='w-7 h-7 flex items-center justify-center  font-semibold'>
-													<AvatarImage
-														src={option.imageUrl || undefined}
-														alt={option.label || undefined}
-													/>
-													<AvatarFallback className='!bg-[#2354E6] text-white'>
-														<Image src={ProductAvatar} alt='avatar' />
-													</AvatarFallback>
-												</Avatar>
+												<InitialsAvatar name={option.label} />
 												<span>{option.label}</span>
 											</div>
 										</SelectItem>
@@ -165,18 +161,14 @@ export default function ProductDropDown({
 								)} */}
 								{filteredOptions.length > 0 ? (
 									filteredOptions.map((option) => (
-										<SelectItem
-											key={option.value}
-											value={option.value}
-											className='!font-normal'
-										>
+										<SelectItem key={option.value} value={option.value}>
 											<div className='flex items-center gap-2'>
-												<Avatar className='w-7 h-7 flex items-center justify-center'>
+												<Avatar className='w-7 h-7 flex items-center justify-center  font-semibold'>
 													<AvatarImage
 														src={option.imageUrl || undefined}
 														alt={option.label || undefined}
 													/>
-													<AvatarFallback className='] text-sm'>
+													<AvatarFallback className=' text-sm'>
 														<Image src={ProductAvatar} alt='avatar' />
 													</AvatarFallback>
 												</Avatar>
@@ -189,6 +181,7 @@ export default function ProductDropDown({
 								)}
 
 								<hr className='my-2 border-gray-300' />
+								{/* Direct Input for Custom Product */}
 								<div className='p-2 flex'>
 									<Input
 										type='text'
@@ -196,7 +189,7 @@ export default function ProductDropDown({
 										onChange={(e) => {
 											setProduct(e.target.value);
 											setOpen(true);
-											setTimeout(() => e.target.focus(), 0);
+											setTimeout(() => e.target.focus(), 0); // Re-focus after state update
 										}}
 										className='w-full px-2 py-1 border rounded-md'
 									/>
@@ -206,7 +199,7 @@ export default function ProductDropDown({
 											onClick={() => {
 												setIsTextField(true);
 												setValue(name, product);
-												setOpen(false);
+												setOpen(false); // Close dropdown
 											}}
 											className='px-3 py-2 bg-[#E8EDFC] text-sm text-[#2354E6] rounded-md w-full ml-1'
 										>
@@ -221,8 +214,8 @@ export default function ProductDropDown({
 									<button
 										type='button'
 										onClick={() => {
-											setOpen(false);
-											setShowModal(true);
+											setOpen(false); // Close dropdown
+											setShowModal(true); // Open modal
 										}}
 										className='px-3 py-2 bg-[#E8EDFC] text-sm text-[#2354E6] rounded-md w-full'
 									>
@@ -231,61 +224,6 @@ export default function ProductDropDown({
 								</div>
 							</SelectContent>
 						</Select>
-						{/* <Select
-							open={open}
-							onOpenChange={setOpen}
-							onValueChange={(value) => {
-								setValue(name, value); 
-								setProduct(value); 
-								const selectedProduct = products.find((p) => p.value === value);
-								if (selectedProduct) {
-									onProductSelect(selectedProduct); 
-								}
-								setOpen(false);
-							}}
-							value={product} 
-						>
-							<SelectTrigger className='bg-[#F8FAFC] h-10 !font-normal !text-[#64748B]'>
-								<SelectValue placeholder='Select Product' />
-							</SelectTrigger>
-
-							<SelectContent>
-								<div className='p-2'>
-									<Input
-										type='text'
-										placeholder='Search...'
-										value={search}
-										onChange={(e) => setSearch(e.target.value)}
-										className='w-full px-2 py-1 border rounded-md mb-2'
-									/>
-								</div>
-
-								{filteredOptions.length > 0 ? (
-									filteredOptions.map((option) => (
-										<SelectItem
-											key={option.value}
-											value={option.value}
-											className='!font-normal'
-										>
-											<div className='flex items-center gap-2'>
-												<Avatar className='w-7 h-7 flex items-center justify-center'>
-													<AvatarImage
-														src={option.imageUrl || undefined}
-														alt={option.label || undefined}
-													/>
-													<AvatarFallback className='] text-sm'>
-														<Image src={ProductAvatar} alt='avatar' />
-													</AvatarFallback>
-												</Avatar>
-												<span>{option.label}</span>
-											</div>
-										</SelectItem>
-									))
-								) : (
-									<div className='p-2 text-gray-500'>No results found</div>
-								)}
-							</SelectContent>
-						</Select> */}
 					</FormControl>
 					<div className='min-h-[20px] text-red-600'>
 						<FormMessage />
