@@ -18,10 +18,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { type Control } from 'react-hook-form';
 import { TextField } from '@/components/form-elements';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { IoCart } from 'react-icons/io5';
-import ProductAvatar from '@/components/images/Avatars.png';
-import Image from 'next/image';
+import InitialsAvatar from '@/components/icon-components/initial-avatar';
+
 type FormControlProps = {
 	name: string;
 	control: Control<any>;
@@ -39,9 +37,9 @@ export default function ProductDropDown({
 	onProductSelect,
 	setValue,
 }: FormControlProps) {
-	const [products, setProducts] = useState<
-		{ label: string; value: string; imageUrl?: string }[]
-	>([]);
+	const [products, setProducts] = useState<{ label: string; value: string }[]>(
+		[]
+	);
 	const [product, setProduct] = useState<string>('');
 	const [open, setOpen] = useState(false);
 	const [search, setSearch] = useState('');
@@ -65,8 +63,7 @@ export default function ProductDropDown({
 				const productOptions = response.map((product) => ({
 					label: product.name,
 					value: product.name,
-					// ...product,
-					imageUrl: product?.imageUrl as string | undefined,
+					...product,
 				}));
 				setProducts(productOptions);
 			} catch (err: any) {
@@ -150,28 +147,18 @@ export default function ProductDropDown({
 								{/* {filteredOptions.length > 0 ? (
 									filteredOptions.map((option) => (
 										<SelectItem key={option.value} value={option.value}>
-											<div className='flex items-center gap-2'>
-												<InitialsAvatar name={option.label} />
-												<span>{option.label}</span>
-											</div>
+											{option.label}
 										</SelectItem>
 									))
 								) : (
 									<div className='p-2 text-gray-500'>No results found</div>
 								)} */}
+
 								{filteredOptions.length > 0 ? (
 									filteredOptions.map((option) => (
 										<SelectItem key={option.value} value={option.value}>
 											<div className='flex items-center gap-2'>
-												<Avatar className='w-7 h-7 flex items-center justify-center  font-semibold'>
-													<AvatarImage
-														src={option.imageUrl || undefined}
-														alt={option.label || undefined}
-													/>
-													<AvatarFallback className=' text-sm'>
-														<Image src={ProductAvatar} alt='avatar' />
-													</AvatarFallback>
-												</Avatar>
+												<InitialsAvatar name={option.label} />
 												<span>{option.label}</span>
 											</div>
 										</SelectItem>
