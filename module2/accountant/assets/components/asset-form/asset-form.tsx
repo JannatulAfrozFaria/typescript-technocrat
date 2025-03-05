@@ -16,6 +16,8 @@ import * as z from 'zod';
 import { SelectItem } from '@/components/ui/select';
 import InputWithAddon from '@/components/input-with-addon';
 import ProductLifeInput from './product-life-Input';
+import { Input } from '@/components/ui/input';
+import CalendarInputIcon from '@/components/icon-components/calender-input-icon';
 
 interface AssetFormProps {
 	onOpenChange: Dispatch<SetStateAction<boolean>>;
@@ -110,6 +112,17 @@ export default function AssetForm({ onOpenChange }: AssetFormProps) {
 				{/* Purchase Date */}
 				<FormInputLabel text='Purchase date' />
 				<DatePicker name='date' label='' control={control} />
+
+				{/* TODO: update date picker according to UI */}
+
+				{/* <div className='relative mb-5'>
+					<Input
+						className='!bg-[#F8FAFC] h-10 border border-gray-300 pl-3 pr-10'
+						name='date'
+						type='button'
+					/>
+					<CalendarInputIcon className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500' />
+				</div> */}
 
 				{/* Purchase Price */}
 				<InputWithAddon
