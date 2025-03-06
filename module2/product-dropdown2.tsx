@@ -247,18 +247,7 @@ export default function ProductDropDown({
 											value={option.value}
 											className='!font-normal'
 										>
-											<div className='flex items-center gap-2'>
-												<Avatar className='w-7 h-7 flex items-center justify-center'>
-													<AvatarImage
-														src={option.imageUrl || undefined}
-														alt={option.label || undefined}
-													/>
-													<AvatarFallback className='] text-sm'>
-														<Image src={ProductAvatar} alt='avatar' />
-													</AvatarFallback>
-												</Avatar>
-												<span>{option.label}</span>
-											</div>
+											
 										</SelectItem>
 									))
 								) : (
