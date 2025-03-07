@@ -4,8 +4,6 @@ import { useForm } from 'react-hook-form';
 import { ContactSchema } from './zod-validation-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { Contact } from '@/types/prisma-types';
-import { isObjectTruthy } from '@/lib/utils';
-// import { Form } from '@/components/ui/form';
 import {
 	CountryPicker,
 	CurrencyPicker,
@@ -21,8 +19,12 @@ import {
 	FormLabel,
 	FormMessage,
 } from '@/components/ui/form';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { PhoneInput } from 'react-international-phone';
+import { CountrySelectorDropdown } from 'react-international-phone';
+import 'react-international-phone/style.css';
+
 interface ContactFormProps {
 	selectedContact?: Contact;
 	handleContactFormSubmit: (contactData: Contact, contactId?: string) => void;
@@ -66,14 +68,22 @@ export default function ContactForm({
 	} = form;
 
 	async function onSubmit(data: Contact) {
+		console.log(
+			'📣 -> file: contact-form.tsx:70 -> onSubmit -> data:',
+			JSON.stringify(data, null, 2)
+		);
 		if (Object.keys(errors).length) {
+			console.log(
+				'📣 -> file: contact-form.tsx:72 -> onSubmit -> errors:',
+				JSON.stringify(errors, null, 2)
+			);
 			toast.error('There are errors in your form');
 			return;
 		}
 		try {
-			selectedContact?.id
-				? handleContactFormSubmit(data, selectedContact?.id)
-				: handleContactFormSubmit(data);
+			// selectedContact?.id
+			// 	? handleContactFormSubmit(data, selectedContact?.id)
+			// 	: handleContactFormSubmit(data);
 		} catch (error) {
 			console.error('Error creating contact:', error);
 		}
@@ -84,25 +94,25 @@ export default function ContactForm({
 			reset({
 				...form.getValues(),
 				...selectedContact,
-				address: {
-					...form.getValues().address,
-					...selectedContact?.address,
-				},
+				address: { ...form.getValues().address, ...selectedContact?.address },
 			});
 		}
 	}, [selectedContact]);
-
+	const [selectedCountry, setSelectedCountry] = useState<string | undefined>(
+		undefined
+	);
 	return (
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{/* Radio Group */}
 				<div className='grid grid-cols-2 gap-x-16 mb-10'>
+					{/* CONTACT---TYPE */}
 					<FormField
 						control={form.control}
 						name='type'
 						render={({ field }) => (
 							<FormItem className='space-y-4'>
-								<FormLabel className='text-sm font-semibold'>
+								<FormLabel className='text-sm font-medium'>
 									Contact type
 								</FormLabel>
 								<FormControl>
@@ -153,12 +163,13 @@ export default function ContactForm({
 							</FormItem>
 						)}
 					/>
+					{/* ENTITY---TYPE---- */}
 					<FormField
 						control={form.control}
 						name='entity'
 						render={({ field }) => (
 							<FormItem className='space-y-4'>
-								<FormLabel className='text-sm font-semibold'>
+								<FormLabel className='text-sm font-medium'>
 									Entity type
 								</FormLabel>
 								<FormControl>
@@ -202,147 +213,183 @@ export default function ContactForm({
 				</div>
 
 				{/* Basic Info */}
-				<div className='overflow-y-scroll scrollbar-none max-h-[65vh] will-change-transform'>
+				<div>
 					<div className='mb-6'>
-						<h1 className='text-[#0F172A] font-semibold mb-4'>Basic Info</h1>
+						<h1 className='text-[#0F172A] text-lg font-semibold mb-4'>
+							Basic Info
+						</h1>
 						<div className='grid grid-cols-2 gap-x-6'>
-							<div className='ml-[.5px]'>
-								<TextField
-									control={control}
-									name='name'
-									label='Name'
-									placeholder='Name'
-								/>
+							<TextField
+								control={control}
+								name='name'
+								label='Name'
+								placeholder='Name'
+							/>
+							<TextField
+								name='email'
+								label='Email'
+								control={control}
+								placeholder='Email'
+							/>
 
-								<TextField
-									name='email'
-									label='Email'
-									control={control}
-									placeholder='Email'
-								/>
+							{/* <TextField
+								name='phoneNumber'
+								label='Phone Number'
+								control={control}
+								placeholder='Phone Number'
+							/> */}
 
-								<TextField
-									name='phoneNumber'
-									label='Phone Number'
-									control={control}
-									placeholder='Phone Number'
-								/>
-							</div>
+							<FormField
+								control={control}
+								name={'phoneNumber'}
+								render={({ field }) => (
+									<FormItem>
+										{<FormLabel>Phone Number</FormLabel>}
+										<FormControl>
+											<PhoneInput
+												defaultCountry='es'
+												preferredCountries={['es', 'us']}
+												className='border rounded-md !items-center '
+												style={{
+													backgroundColor: '#F8FAFC',
+													height: 40,
+													fontFamily: 'axiforma',
+												}}
+												inputClassName='!border-none !bg-transparent !text-sm !font-medium'
+												countrySelectorStyleProps={{
+													buttonStyle: {
+														backgroundColor: 'transparent',
+														border: 'none',
+														paddingLeft: '0.5rem',
+													},
+													// buttonContentWrapperClassName: 'hover:bg-blue-300',
+													dropdownStyleProps: {
+														style: {
+															boxShadow: 'none', // Remove shadow
+														},
+														className:
+															'!w-[346px] border rounded-md !px-1 !max-h-60 !overflow-y-auto scrollbar-none custom-dropdown',
+													},
+													listItemStyle: {
+														backgroundColor: 'white', // Default background color
+													},
+													listItemClassName: 'custom-dropdown-item',
+												}}
+												placeholder={'Phone Number'}
+												value={field.value as string | undefined}
+												// onChange={(phoneNumber) => field.onChange(phoneNumber)}
+												onChange={(phoneNumber, { country }) => {
+													field.onChange(phoneNumber); // Update the form field value
+													setSelectedCountry(country.iso2); // Update the selected country state
+												}}
+												disableDialCodeAndPrefix={!selectedCountry} // Hide dial code by default
+												showDisabledDialCodeAndPrefix={!!selectedCountry} // Show dial code when a country is selected
+											/>
+										</FormControl>
+										<div className='min-h-[20px] text-red-600'>
+											<FormMessage />
+										</div>
+									</FormItem>
+								)}
+							/>
 
-							<div className='mr-[1px]'>
-								{/* Website Field */}
-								<TextField
-									name='website'
-									label='Website'
-									control={control}
-									placeholder='Website'
-								/>
-
-								{/* NIF Field */}
-								<TextField
-									name='nif'
-									label='NIF'
-									control={control}
-									placeholder='NIF'
-									type='number'
-								/>
-
-								{/* VAT Number Field */}
-								<TextField
-									name='vatNumber'
-									label='VAT Number'
-									control={control}
-									placeholder='VAT Number'
-								/>
-							</div>
+							{/* Website Field */}
+							<TextField
+								name='website'
+								label='Website'
+								control={control}
+								placeholder='Website'
+							/>
+							{/* NIF Field */}
+							<TextField
+								name='nif'
+								label='NIF'
+								control={control}
+								placeholder='NIF'
+								type='number'
+							/>
+							{/* VAT Number Field */}
+							<TextField
+								name='vatNumber'
+								label='VAT Number'
+								control={control}
+								placeholder='VAT Number'
+							/>
 						</div>
 					</div>
 
 					{/* Invoice settings */}
 					<div className='mb-6'>
-						<h1 className='text-[#0F172A] text-base font-semibold mb-4'>
+						<h1 className='text-[#0F172A] text-lg font-semibold mb-4'>
 							Invoice Settings
 						</h1>
 						<div className='grid grid-cols-2 gap-x-6'>
-							<div className='ml-[.5px]'>
-								<LanguagePicker control={control} />
-
-								<TextField
-									name='discountPercentage'
-									label='Standard discount'
-									control={control}
-									placeholder='0%'
-									type='number'
-								/>
-							</div>
-
-							<div className='mr-[1px]'>
-								<CurrencyPicker control={control} />
-
-								{/* Standard Due Date Days */}
-								<TextField
-									name='dueDateInDays'
-									label='Standard due date (days)'
-									control={control}
-									placeholder='14'
-									type='number'
-								/>
-							</div>
+							<LanguagePicker control={control} />
+							<CurrencyPicker control={control} />
+							<TextField
+								name='discountPercentage'
+								label='Standard discount'
+								control={control}
+								placeholder='0%'
+								type='number'
+							/>
+							{/* Standard Due Date Days */}
+							<TextField
+								name='dueDateInDays'
+								label='Standard due date (days)'
+								control={control}
+								placeholder='14'
+								type='number'
+							/>
 						</div>
 					</div>
 
 					{/* Address */}
 					<div>
-						<h1 className='text-[#0F172A] text-base font-semibold mb-4'>
+						<h1 className='text-[#0F172A] text-lg font-semibold mb-4'>
 							Address
 						</h1>
 						<div className='grid grid-cols-2 gap-x-6'>
-							<div className='ml-[.5px]'>
-								<TextField
-									name='address.addressLine1'
-									label='Address Line 1'
-									control={control}
-									placeholder='Address Line 1'
-								/>
+							<TextField
+								name='address.addressLine1'
+								label='Address Line 1'
+								control={control}
+								placeholder='Address Line 1'
+							/>
+							{/* Postal Code */}
+							<TextField
+								name='address.postalCode'
+								label='Postal Code'
+								control={control}
+								placeholder='Postal Code'
+								type='number'
+							/>
 
-								<TextField
-									name='address.addressLine2'
-									label='Address Line 2'
-									control={control}
-									placeholder='Address Line 2'
-								/>
-
-								<TextField
-									name='address.city'
-									label='City'
-									control={control}
-									placeholder='City'
-								/>
-							</div>
-
-							<div className='mr-[1px]'>
-								{/* Postal Code */}
-								<TextField
-									name='address.postalCode'
-									label='Postal Code'
-									control={control}
-									placeholder='Postal Code'
-									type='number'
-								/>
-								<TextField
-									name='address.province'
-									label='Province'
-									control={control}
-									placeholder='Province'
-								/>
-
-								{/* Country Dropdown */}
-								<CountryPicker control={control} name='address.countryId' />
-							</div>
+							<TextField
+								name='address.addressLine2'
+								label='Address Line 2'
+								control={control}
+								placeholder='Address Line 2'
+							/>
+							{/* PROVINCE--- */}
+							<TextField
+								name='address.province'
+								label='Province'
+								control={control}
+								placeholder='Province'
+							/>
+							<TextField
+								name='address.city'
+								label='City'
+								control={control}
+								placeholder='City'
+							/>
+							{/* Country Dropdown */}
+							<CountryPicker control={control} name='address.countryId' />
 						</div>
 					</div>
 				</div>
-
+				{/* BUTTON----- */}
 				<div className='text-left mr-1 mt-5 flex justify-end items-end'>
 					<button
 						type='submit'
