@@ -155,7 +155,7 @@ export default function ContactForm({
 												}}
 												placeholder={'Phone Number'}
 												value={field.value as string | undefined}
-												// onChange={(phoneNumber) => field.onChange(phoneNumber)}
+												
 												onChange={(phoneNumber, { country }) => {
 													field.onChange(phoneNumber); // Update the form field value
 													setSelectedCountry(country.iso2); // Update the selected country state
