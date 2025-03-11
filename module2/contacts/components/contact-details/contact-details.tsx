@@ -12,7 +12,7 @@ interface ContactDetailsProps {
 	selectedContact?: Contact;
 	handleContactActions: (
 		actionType: 'view-details' | 'edit' | 'delete',
-		contactId: String
+		contactId: string
 	) => void;
 	handleUpdateContactNote: (note: string, contactId: string) => Promise<void>;
 	handleCreateContactPerson: (
@@ -23,7 +23,6 @@ interface ContactDetailsProps {
 export default function ContactDetails({
 	handleContactActions,
 	handleUpdateContactNote,
-	handleCreateContactPerson,
 	selectedContact,
 }: ContactDetailsProps) {
 	const [showAddNoteModal, setShowAddNoteModal] = useState(false);

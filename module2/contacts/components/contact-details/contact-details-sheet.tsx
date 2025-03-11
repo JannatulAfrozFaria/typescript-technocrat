@@ -25,13 +25,7 @@ import PhoneIcon from '@/components/icon-components/phone-icon';
 import WebIcon from '@/components/icon-components/web-icon';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
-import EditIcon from '@/components/icon-components/edit-icon';
-import EditGrayIcon from '@/components/icon-components/edit-gray-icon';
-import AddNoteIcon from '@/components/icon-components/add-note-icon';
-import AddNoteModal from './add-note-modal';
 import ContactDetails from './contact-details';
-// import SearchIcon from '@/components/icon-components/SearchIcon';
-import { Input } from '@/components/ui/input';
 import ContactPersons from './contact-persons';
 
 interface ContactDetailsSheetProps {

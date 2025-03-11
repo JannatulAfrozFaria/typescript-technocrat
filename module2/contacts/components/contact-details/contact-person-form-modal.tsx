@@ -4,11 +4,27 @@ import {
 	Dialog,
 	DialogContent,
 	DialogTitle,
-	DialogDescription,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Form } from '@/components/ui/form';
+import { TextField } from '@/components/form-elements';
+import PhoneNumberInput from '@/components/phone-number-input';
 import type { Dispatch, SetStateAction } from 'react';
 import type { ContactPersonFormDataType } from './contact-persons';
+
+// Zod schema for validation
+const ContactPersonFormSchema = z.object({
+	firstName: z.string().min(1, 'First Name is required'),
+	lastName: z.string().optional(),
+	email: z.string().email('Invalid email format').optional().or(z.literal('')),
+	phoneNumber: z
+		.string()
+		.regex(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number format')
+		.optional()
+		.or(z.literal('')),
+});
 
 interface ContactPersonFormModalProps {
 	isOpen: boolean;
@@ -18,7 +34,7 @@ interface ContactPersonFormModalProps {
 		key: keyof ContactPersonFormDataType,
 		value: string
 	) => void;
-	handleSubmitContactPersonForm: () => void;
+	handleSubmitContactPersonForm: (data: ContactPersonFormDataType) => void;
 }
 
 export default function ContactPersonFormModal({
@@ -28,70 +44,61 @@ export default function ContactPersonFormModal({
 	handleContactPersonData,
 	contactPersonData,
 }: ContactPersonFormModalProps) {
+	const form = useForm<ContactPersonFormDataType>({
+		resolver: zodResolver(ContactPersonFormSchema),
+		defaultValues: contactPersonData, // Initialize with existing data
+	});
+
+	const {
+		control,
+		handleSubmit,
+		formState: { errors },
+	} = form;
+
+	const onSubmit = (data: ContactPersonFormDataType) => {
+		handleSubmitContactPersonForm(data); // Pass validated data to parent
+		onOpenChange(false); // Close the modal
+	};
+
 	return (
 		<Dialog open={isOpen} onOpenChange={onOpenChange}>
 			<DialogContent style={{ width: '600px' }}>
 				<DialogHeader>
 					<DialogTitle>
 						<span className='font-semibold text-3xl mb-6'>
-							Create contact person
+							Create Contact Person
 						</span>
 					</DialogTitle>
 				</DialogHeader>
-				<form
-					onSubmit={(e) => {
-						e.preventDefault();
-						handleSubmitContactPersonForm();
-					}}
-				>
-					<h2 className='text-sm font-medium text-black mb-2'>First Name</h2>
-					<Input
-						bgColor='#f8fafc'
-						borderColor='#e2e8f0'
-						className='bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl text-[#64748b] w-full py-2 px-4'
-						placeholder='First name'
-						value={contactPersonData.firstName}
-						onChange={({ target: { value } }) =>
-							handleContactPersonData('firstName', value)
-						}
-					/>
-					<h2 className='text-sm font-medium text-black my-2'>Last Name</h2>
-					<Input
-						bgColor='#f8fafc'
-						borderColor='#e2e8f0'
-						className='bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl text-[#64748b] w-full py-2 px-4'
-						placeholder='Last name'
-						value={contactPersonData.lastName}
-						onChange={({ target: { value } }) =>
-							handleContactPersonData('lastName', value)
-						}
-					/>
-					<h2 className='text-sm font-medium text-black my-2'>Email</h2>
-					<Input
-						bgColor='#f8fafc'
-						borderColor='#e2e8f0'
-						className='bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl text-[#64748b] w-full py-2 px-4'
-						placeholder='Email'
-						value={contactPersonData.email}
-						onChange={({ target: { value } }) =>
-							handleContactPersonData('email', value)
-						}
-					/>
-					<h2 className='text-sm font-medium text-black my-2'>Phone</h2>
-					<Input
-						bgColor='#f8fafc'
-						borderColor='#e2e8f0'
-						className='bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl text-[#64748b] w-full py-2 px-4'
-						placeholder='Phone'
-						value={contactPersonData.phoneNumber}
-						onChange={({ target: { value } }) =>
-							handleContactPersonData('phoneNumber', value)
-						}
-					/>
-					<Button className='bg-[#2354e6] text-white w-full rounded-md font-semibold mt-6'>
-						Create contact person
-					</Button>
-				</form>
+				<Form {...form}>
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<TextField
+							name='firstName'
+							label='First Name'
+							placeholder='First name'
+							control={control}
+						/>
+						<TextField
+							name='lastName'
+							label='Last Name'
+							placeholder='Last name'
+							control={control}
+						/>
+						<TextField
+							name='email'
+							placeholder='Email'
+							label='Email'
+							control={control}
+						/>
+						<PhoneNumberInput control={control} name='phoneNumber' />
+						<Button
+							type='submit'
+							className='bg-[#2354E6] w-full mt-6 h-[44px] text-white py-2 rounded-md'
+						>
+							Create Contact Person
+						</Button>
+					</form>
+				</Form>
 			</DialogContent>
 		</Dialog>
 	);

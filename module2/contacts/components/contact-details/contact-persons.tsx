@@ -75,37 +75,64 @@ export default function ContactPersons({
 		value: string
 	) => setContactPersonData((prev) => ({ ...prev, [key]: value }));
 
-	const handleSubmitContactPersonForm = async () => {
-		if (!contactPersonData.firstName) {
+	// const handleSubmitContactPersonForm = async () => {
+	// 	if (!contactPersonData.firstName) {
+	// 		toast.error('Contact first name is required');
+	// 		return;
+	// 	}
+
+	// 	const contactPersonBodyData = {
+	// 		fullName:
+	// 			contactPersonData.firstName.trim() +
+	// 			(contactPersonData.lastName
+	// 				? ` ${contactPersonData.lastName.trim()}`
+	// 				: ''),
+	// 	} as ContactPerson;
+
+	// 	if (contactPersonData.email)
+	// 		contactPersonBodyData.email = contactPersonData.email.trim();
+	// 	if (contactPersonData.phoneNumber)
+	// 		contactPersonBodyData.phoneNumber = contactPersonData.phoneNumber.trim();
+
+	// 	// weird I know, but I am too tired to think of a better name
+	// 	const contactPersonsCopyCopy = contactPersonsCopy
+	// 		? [...contactPersonsCopy, contactPersonBodyData]
+	// 		: [];
+
+	// 	setContactPersonsCopy(contactPersonsCopyCopy);
+
+	// 	setShowContactPersonFormModal(false);
+
+	// 	await handleCreateContactPerson(contactPersonBodyData);
+	// };
+
+	const handleSubmitContactPersonForm = async (
+		data: ContactPersonFormDataType
+	) => {
+		if (!data.firstName) {
 			toast.error('Contact first name is required');
 			return;
 		}
 
 		const contactPersonBodyData = {
 			fullName:
-				contactPersonData.firstName.trim() +
-				(contactPersonData.lastName
-					? ` ${contactPersonData.lastName.trim()}`
-					: ''),
+				data.firstName.trim() +
+				(data.lastName ? ` ${data.lastName.trim()}` : ''),
+			email: data.email?.trim() || null,
+			phoneNumber: data.phoneNumber?.trim() || null,
 		} as ContactPerson;
 
-		if (contactPersonData.email)
-			contactPersonBodyData.email = contactPersonData.email.trim();
-		if (contactPersonData.phoneNumber)
-			contactPersonBodyData.phoneNumber = contactPersonData.phoneNumber.trim();
-
-		// weird I know, but I am too tired to think of a better name
+		// Update local state
 		const contactPersonsCopyCopy = contactPersonsCopy
 			? [...contactPersonsCopy, contactPersonBodyData]
-			: [];
+			: [contactPersonBodyData];
 
 		setContactPersonsCopy(contactPersonsCopyCopy);
-
 		setShowContactPersonFormModal(false);
 
+		// Call the API
 		await handleCreateContactPerson(contactPersonBodyData);
 	};
-
 	useEffect(() => {
 		setContactPersonsCopy(contactPersons);
 		setFilteredContactPersons(contactPersons.reverse().slice(0, 2));
