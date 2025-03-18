@@ -38,60 +38,6 @@ const data: Invoice[] = [
 		totalAmount: 109,
 		grandTotal: 4000,
 	},
-	{
-		id: '3',
-		customerContact: 'Gloxy LTD',
-		invoiceNumber: 'INV-003',
-		dueDate: new Date('2025-01-08').toISOString(),
-		status: 'Paid',
-		totalAmount: 149,
-		grandTotal: 900,
-	},
-	{
-		id: '4',
-		customerContact: 'Aceme Crop.',
-		invoiceNumber: 'INV-004',
-		dueDate: new Date('2025-01-04').toISOString(),
-		status: 'Overdue',
-		totalAmount: 329,
-		grandTotal: 600,
-	},
-	{
-		id: '5',
-		customerContact: 'Gloxy LTD',
-		invoiceNumber: 'INV-005',
-		dueDate: new Date('2025-01-21').toISOString(),
-		status: 'Paid',
-		totalAmount: 149,
-		grandTotal: 5200,
-	},
-	{
-		id: '6',
-		customerContact: 'Aceme Crop.',
-		invoiceNumber: 'INV-006',
-		dueDate: new Date('2025-01-20').toISOString(),
-		status: 'Overdue',
-		totalAmount: 329,
-		grandTotal: 4800,
-	},
-	{
-		id: '7',
-		customerContact: 'Gadgets 360',
-		invoiceNumber: 'INV-007',
-		dueDate: new Date('2025-01-16').toISOString(),
-		status: 'Outstanding',
-		totalAmount: 189,
-		grandTotal: 3800,
-	},
-	{
-		id: '8',
-		customerContact: 'Acme ITD.',
-		invoiceNumber: 'INV-001',
-		dueDate: new Date('2025-06-09').toISOString(),
-		status: 'Paid',
-		totalAmount: 200,
-		grandTotal: 1600,
-	},
 ];
 const itemsPerPage = 5;
 //to view----empty---page:
@@ -229,15 +175,6 @@ export default function ExpenseOverview() {
 		}
 	};
 
-	// const handleConfirmDelete = () => {
-	// 	try {
-	// 		toast.success('Expense deleted successfully');
-	// 		setOpenDeleteDialogId(null);
-	// 	} catch (error) {
-	// 		toast.error('Failed to delete expense');
-	// 		console.error('Error deleting expense:', error);
-	// 	}
-	// };
 	const handleDeleteExpense = () => {
 		try {
 			toast.success('Expense deleted successfully');
@@ -256,27 +193,14 @@ export default function ExpenseOverview() {
 		<div className='min-h-screen  bg-[#f8fafc]'>
 			{data?.length > 0 ? (
 				<div className='flex flex-col  w-full  mx-auto p-8'>
-					<BreadCrumbs />
+
 					<div>
-						<HeaderWithDropDown
-							title='Expense Overview'
-							buttonText={'+ New expense'}
-							buttonLink={'/en/purchases/new-expense'}
-						/>
+						
 					</div>
 					<div className='rounded-3xl border-2 border-[#e2e8f0]  bg-white my-6'>
 						{/*TOP---BAR*/}
-						<ExpenseTopBar
-							searchTerm={searchTerm}
-							setSearchTerm={setSearchTerm}
-						/>
-						{/* CHARTS------- */}
-						<SummaryChart data={expenseGraphData} />
-						<ExpenseDataTable
-							handleExpenseActions={handleExpenseActions}
-							data={paginatedData || []}
-							columns={expenseTableColumns(handleRegisterPayment)}
-						/>
+						
+						
 						{/* modal */}
 						{selectedInvoice && (
 							<RegisterPaymentModal
@@ -285,16 +209,7 @@ export default function ExpenseOverview() {
 								invoice={selectedInvoice}
 							/>
 						)}
-						{/* delete--- */}
-						<ConfirmDeleteModal
-							isOpen={showInvoiceDeleteConfirmDialog}
-							onOpenChange={setShowInvoiceDeleteConfirmDialog}
-							handleDelete={handleDeleteExpense}
-							title='Delete Expense'
-							description='Are you sure you want to delete this expense? This action cannot be undone.'
-							confirmButtonText='Delete'
-							cancelButtonText='Cancel'
-						/>
+						
 
 						{/* PAGINATION------ */}
 						<div className='px-4'>
