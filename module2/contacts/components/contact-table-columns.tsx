@@ -58,7 +58,12 @@ export const contactTableColumns: ColumnDef<Contact>[] = [
 		id: 'type',
 		accessorKey: 'type',
 		header: 'Contact Type',
-		cell: ({ row }) => capitalizeFirstLetter(row.original.type),
+		cell: ({ row }) => 
+			{row.original.type === 'CUSTOMER_AND_VENDOR'
+				? 'Both'
+				: capitalizeFirstLetter(row.original.type)}
+			// capitalizeFirstLetter(row.original.type)
+		,
 	},
 	{
 		id: 'entity',
