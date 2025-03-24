@@ -424,12 +424,7 @@ export default function ContactForm({
 				</div>
 				{/* BUTTON----- */}
 				<div className='text-left mr-1 mt-5 flex justify-end items-end'>
-					<button
-						type='submit'
-						className='w-[198px] h-[44px] bg-[#2354E6] text-white py-2 rounded-md'
-					>
-						{selectedContact?.id ? 'Update Contact' : 'Create Contact'}
-					</button>
+					
 				</div>
 			</form>
 		</Form>
