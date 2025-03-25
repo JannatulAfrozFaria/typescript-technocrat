@@ -32,6 +32,9 @@ export default function ContactForm({
 	selectedContact,
 	handleContactFormSubmit,
 }: ContactFormProps) {
+	// Get the default values first
+	const defaultCountryId = '66d887eadef590cd740f7cf4';
+	const defaultLanguageId = '65b95c99fe63493e82758689';
 	const form = useForm<Contact>({
 		resolver: zodResolver(ContactSchema),
 		defaultValues: {
@@ -43,7 +46,8 @@ export default function ContactForm({
 			website: '',
 			nif: '',
 			vatNumber: '',
-			languageId: '',
+			// languageId: '',
+			languageId: defaultLanguageId, // Use the actual ID
 			discountPercentage: undefined,
 			currencyId: '',
 			dueDateInDays: undefined,
@@ -53,7 +57,8 @@ export default function ContactForm({
 				city: '',
 				postalCode: '',
 				province: '',
-				countryId: '',
+				// countryId: '',
+				countryId: defaultCountryId, // Use the actual ID
 			},
 		},
 	});
@@ -94,25 +99,17 @@ export default function ContactForm({
 	return (
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				{/* Basic Info */}
-				<TextField
-								control={control}
-								name='name'
-								label='Name'
-								placeholder='Name'
-							/>
-							<TextField
-								name='email'
-								label='Email'
-								control={control}
-								placeholder='Email'
-							/>
-				<div>
+				{/* Radio Group */}
+				<div className='grid grid-cols-2 gap-x-16 mb-10'>
 					{/* Invoice settings */}
 					<div className='mb-6'>
+						<h1 className='text-[#0F172A] text-lg font-semibold mb-4'>
+							Invoice Settings
+						</h1>
 						<div className='grid grid-cols-2 gap-x-6'>
 							<LanguagePicker control={control} />
 							<CurrencyPicker control={control} />
+							
 						</div>
 					</div>
 
@@ -122,6 +119,7 @@ export default function ContactForm({
 							Address
 						</h1>
 						<div className='grid grid-cols-2 gap-x-6'>
+							
 							{/* Country Dropdown */}
 							<CountryPicker control={control} name='address.countryId' />
 						</div>
