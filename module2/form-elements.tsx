@@ -47,7 +47,6 @@ type DropDownProps = {
 	selectContentClassName?: string;
 	defaultValue?: string;
 };
-
 // DropDown Component
 const DropDown: React.FC<DropDownProps> = ({
 	name,
@@ -73,19 +72,16 @@ const DropDown: React.FC<DropDownProps> = ({
 								const newValue = isNaN(Number(value)) ? value : Number(value);
 								field.onChange(newValue);
 							}}
-							value={field?.value?.toString() || ''}
+							// ✅ Set default value
+							value={field?.value?.toString() || defaultValue}
 						>
 							<SelectTrigger
 								style={{ backgroundColor: '#F8FAFC', height: 40 }}
-								// className='w-full border rounded-md px-3 !font-normal'
 								className={`w-full border rounded-md px-3 !font-normal !text-[#64748B] ${
 									field.value ? ' !text-black' : ''
 								} data-[state=open]:font-semibold data-[state=open]:text-black`}
 							>
-								<SelectValue
-									className='!font-normal'
-									placeholder={placeholder}
-								/>
+								<SelectValue placeholder={placeholder} />
 							</SelectTrigger>
 							<SelectContent
 								className={twMerge(
@@ -117,13 +113,13 @@ type CountryPickerProps = {
 const CountryPicker: React.FC<CountryPickerProps> = ({
 	control,
 	disabled,
-	name = 'countryId',
+	name = 'address.countryId',
 }) => {
 	const { countries, loading } = useCountries();
 
-	const defaultCountry = countries.find((country) => country.label === 'Spain');
-
 	if (loading) return <p>Loading countries...</p>;
+
+	const defaultCountry = countries.find((country) => country.label === 'Spain');
 
 	return (
 		<DropDown
@@ -132,6 +128,7 @@ const CountryPicker: React.FC<CountryPickerProps> = ({
 			control={control}
 			disabled={disabled}
 			placeholder='Select Country'
+			defaultValue={defaultCountry?.id.toString()} // ✅ Set default value
 		>
 			{countries.map((country) => (
 				<SelectItem key={country.id} value={country.id.toString()}>
@@ -155,14 +152,13 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
 	name = 'languageId',
 	defaultValue = '',
 }) => {
-	const { languages, loading } = useLanguages(); // Assuming useLanguages hook to fetch languages
+	const { languages, loading } = useLanguages();
 
-	// Find the default language (Spanish) by its label
+	if (loading) return <p>Loading languages...</p>;
+
 	const defaultLanguage = languages.find(
 		(language) => language.label === 'Spanish'
 	);
-
-	if (loading) return <p>Loading languages...</p>;
 
 	return (
 		<DropDown
@@ -171,14 +167,10 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
 			control={control}
 			disabled={disabled}
 			placeholder='Select Language'
-			defaultValue={defaultValue}
+			defaultValue={defaultLanguage?.id.toString()} // ✅ Set default value
 		>
 			{languages.map((language) => (
-				<SelectItem
-					className='font-medium'
-					key={language.id}
-					value={language.id.toString()}
-				>
+				<SelectItem key={language.id} value={language.id.toString()}>
 					{capitalizeFirstLetter(language.label)}
 				</SelectItem>
 			))}
