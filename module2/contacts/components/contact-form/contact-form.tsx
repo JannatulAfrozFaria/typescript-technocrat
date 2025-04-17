@@ -130,7 +130,7 @@ export default function ContactForm({
 					</div>
 				</div>
 				{/* BUTTON----- */}
-				<div className='text-left mr-1 mt-5 flex justify-end items-end'>
+				<div >
 				<button
 						type='submit'
 						className='w-[198px] h-[44px] bg-[#2354E6] text-white py-2 rounded-md'
