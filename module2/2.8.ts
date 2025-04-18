@@ -1,0 +1,4 @@
+{
+    //PROMISE
+    const createPromise = ()
+}
