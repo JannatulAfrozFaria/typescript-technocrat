@@ -16,5 +16,5 @@
         const data = await createPromise()
         console.log(data)
     }
-    showData();
+    
 }
