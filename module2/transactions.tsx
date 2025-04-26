@@ -191,7 +191,7 @@ export default function Transactions({
 				</div>
 			) : (
 				<p className='text-gray-500 text-center mt-11'>
-					Select an account to view transactions
+					
 				</p>
 			)}
 		</div>
