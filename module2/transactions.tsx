@@ -188,6 +188,18 @@ export default function Transactions({
 					<div className='w-full bg-gray-200 rounded-full h-1.5 mt-4 overflow-hidden'>
 						<div className='bg-blue-600 h-1.5 rounded-full w-1/2 animate-slide'></div>
 					</div>
+					{/* <div className='w-full bg-gray-200 rounded-full h-1 mt-4 overflow-hidden relative'>
+						{loadingTransactions && (
+							<div
+								className='bg-blue-600 h-1 rounded-full absolute'
+								style={{
+									width: '0%',
+									animation: 'gradualProgress 5s ease-out infinite',
+									left: '0%',
+								}}
+							></div>
+						)}
+					</div> */}
 				</div>
 			) : (
 				<p className='text-gray-500 text-center mt-11'>
