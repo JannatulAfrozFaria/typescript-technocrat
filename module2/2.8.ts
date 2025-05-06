@@ -11,7 +11,7 @@
         })
     }
 
-    //callling create promise function
+    //calling create promise function
     const showData = async() =>{
         const data = await createPromise()
         console.log(data)
