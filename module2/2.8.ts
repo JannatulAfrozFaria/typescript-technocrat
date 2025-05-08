@@ -16,7 +16,7 @@
     const showData = async(): Promise<Something> =>{
         const data : Something = await createPromise();
         return data;
-
+        console.log(data)
     }
     showData();
 }
