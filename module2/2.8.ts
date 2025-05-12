@@ -7,7 +7,7 @@
             if(data){
                 resolve(data)
             }else{
-                reject('f')
+                reject('failed to load data')
             }
         })
     }
