@@ -18,5 +18,5 @@
         return data;
         console.log(data)
     }
-   
+    showData();
 }
