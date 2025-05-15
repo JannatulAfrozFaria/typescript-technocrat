@@ -12,7 +12,11 @@
         return obj[key];
     }
 
-    
+    const user = {
+        name: 'Mr. persi',
+        age: 27,
+        address: 'ctg'
+    }
     const result = getPropertyValue(user,'name');
     const car = {
         model:"Toyota 100",
