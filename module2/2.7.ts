@@ -18,9 +18,6 @@
         address: 'ctg'
     }
     const result = getPropertyValue(user,'name');
-    const car = {
-        model:"Toyota 100",
-        year: 200
-    }
+    
     const result1 = getPropertyValue(car,'year');
 }
